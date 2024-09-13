@@ -13,11 +13,12 @@
 
     "skipLibCheck": true,
     "allowJs": true,
+    "types": ["node"],
     // "checkJs": true,
 
     "strict": false
   },
-  "include": ["src", "src/**/*"],
+  "include": ["src", "src/**/*.ts"],
   "exclude": ["node_modules", "dist/*", "src/static"],
   "lib": ["es6"]
 }
