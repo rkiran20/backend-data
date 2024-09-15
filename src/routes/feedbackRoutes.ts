@@ -24,4 +24,22 @@ router.get("/feedbacks", async (req, res) => {
   }
 });
 
+router.post("/feedbacks", async (req, res) => {
+  try {
+    const { text, company, badgeLetter, upvoteCount, daysAgo } = req.body;
+    const newFeedback = new Feedback({
+      text,
+      company,
+      badgeLetter,
+      upvoteCount,
+      daysAgo,
+    });
+    const savedFeedback = await newFeedback.save();
+    res.status(201).json(savedFeedback);
+  } catch (error) {
+    console.error("Error adding feedback:", error);
+    res.status(500).json({ message: "Error adding feedback", error });
+  }
+});
+
 export default router;
