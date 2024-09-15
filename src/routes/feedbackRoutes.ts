@@ -27,6 +27,11 @@ router.get("/feedbacks", async (req, res) => {
 router.post("/feedbacks", async (req, res) => {
   try {
     const { text, company, badgeLetter, upvoteCount, daysAgo } = req.body;
+    if (!text || !company) {
+      return res
+        .status(400)
+        .json({ message: "Text and company are required fields" });
+    }
     const newFeedback = new Feedback({
       text,
       company,
